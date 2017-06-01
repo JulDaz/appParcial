@@ -9,25 +9,16 @@ package edu.co.sergio.mundo.vo;
  *
  * @author JulDa
  */
-public class Consulta3 {
-    private String nom_depto;
-    private String tipo_contrato;
+public class Colmena {
+    private int panalesAlimento;
     private int total;
 
-    public String getNom_depto() {
-        return nom_depto;
+    public int getPanalesAlimento() {
+        return panalesAlimento;
     }
 
-    public void setNom_depto(String nom_depto) {
-        this.nom_depto = nom_depto;
-    }
-
-    public String getTipo_contrato() {
-        return tipo_contrato;
-    }
-
-    public void setTipo_contrato(String tipo_contrato) {
-        this.tipo_contrato = tipo_contrato;
+    public void setPanalesAlimento(int panalesAlimento) {
+        this.panalesAlimento = panalesAlimento;
     }
 
     public int getTotal() {

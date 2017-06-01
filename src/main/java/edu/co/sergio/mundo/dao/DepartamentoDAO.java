@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import edu.co.sergio.mundo.vo.Departamento;
 import edu.co.sergio.mundo.vo.Proyecto;
 import java.net.URISyntaxException;
 import java.util.logging.Level;

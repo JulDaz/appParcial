@@ -5,7 +5,7 @@
  */
 package edu.co.sergio.mundo.dao;
 
-import edu.co.sergio.mundo.vo.Consulta3;
+import edu.co.sergio.mundo.vo.Colmena;
 import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -15,46 +15,43 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.sql.PreparedStatement;
 
 /**
  *
  * @author JulDa
  */
-public class Consulta3DAO implements IBaseDatos<Consulta3>{
+public class ColmenaDAO implements IBaseDatos<Colmena> {
 
     @Override
-    public List<Consulta3> findAll() {
-        List<Consulta3> consul= null;
-	    String query = "select nom_depto, tipo_contrato, count(*) as total from Depto join Empleado using (id_depto) group by nom_depto, tipo_contrato having count(*)>1";
+    public List<Colmena> findAll() {
+        List<Colmena> colmenas= null;
+	    String query = "select panalesAlimento, count(*) as total from VisitaTecnica group by panalesAlimento;";
 	    Connection connection = null;
             try {
                 connection = Conexion.getConnection();
             } catch (URISyntaxException ex) {
-                Logger.getLogger(Consulta3DAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ColmenaDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
 	    try {
 	    Statement st = connection.createStatement();
 	    ResultSet rs = st.executeQuery(query);
-	    String id =null;
-            String f2= null;
+	    int alimento=0;
 	    int total = 0;
 	
 	    while (rs.next()){
-	    	if(consul == null){
-	    		consul= new ArrayList<Consulta3>();
+	    	if(colmenas == null){
+	    		colmenas= new ArrayList<Colmena>();
 	    	}
 	      
-	        Consulta3 registro= new Consulta3();
-	        id= rs.getString("nom_depto");
-	        registro.setNom_depto(id);
+	        Colmena registro= new Colmena();
+	        alimento= rs.getInt("panalesAlimento");
+	        registro.setPanalesAlimento(alimento);
 	        
-                f2= rs.getString("tipo_contrato");
-	        registro.setTipo_contrato(f2);
-                
 	        total = rs.getInt("total");
-	        registro.setTotal(total);
+	        registro.setTotal(total); 
 	        
-	        consul.add(registro);
+	        colmenas.add(registro);
 	    }
 	    st.close();
 	    
@@ -63,21 +60,21 @@ public class Consulta3DAO implements IBaseDatos<Consulta3>{
 			e.printStackTrace();
 		}
 	    
-	    return consul;
+	    return colmenas;
     }
 
     @Override
-    public boolean insert(Consulta3 t) {
+    public boolean insert(Colmena t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean update(Consulta3 t) {
+    public boolean update(Colmena t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean delete(Consulta3 t) {
+    public boolean delete(Colmena t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

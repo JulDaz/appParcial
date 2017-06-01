@@ -24,7 +24,7 @@ body {
           
         </form>
      </div>
- 
+ /*
     <%
        if( request.getAttribute("departamentos")!=null){
           List<Departamento> departamentos  = (List<Departamento>)request.getAttribute("departamentos");
@@ -37,9 +37,10 @@ body {
       
     
     %>
+    */
+    
     <img src="ChartServlet" /> <br>
-    <img src="Chart2" /> <br>
-    <img src="Chart3" />
+   
     
 </body>
 </html>
